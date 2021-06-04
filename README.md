@@ -18,5 +18,5 @@ My configuration is an edition of i3 for kali linux
   <code> $HOME/.config/gtk-3.0</code>
   <hr>
   <h1>Screenshot</h1>
-  <img src="1.jpg">
-  <img src="2.jpg">
+  <img src="1.png">
+  <img src="2.png">
