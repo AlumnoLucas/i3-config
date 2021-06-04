@@ -1,5 +1,5 @@
 # i3-config
-My configuration is an edition of i3 for kali linux
+My configuration is an edition of i3 for Kali Linux-
 <hr>
 <h1>This edition would not exist if @golubem had not created its code.</h1>
 <code> https://github.com/golubem/i3-config </code>
@@ -18,5 +18,5 @@ My configuration is an edition of i3 for kali linux
   <code> $HOME/.config/gtk-3.0</code>
   <hr>
   <h1>Screenshot</h1>
-  <img src="1.png">
-  <img src="2.png">
+  <img src="/photo/1.png">
+  <img src="/photo/2.png">
