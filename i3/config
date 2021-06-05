@@ -1,0 +1,247 @@
+# i3 config
+# #########     
+#                            
+# i3 version: 4.12 
+# Config version: 3.11.7               
+# Dependencies: scrot, feh                                  
+# Author: Brainfuck 
+# https://github.com/BrainfuckSec/i3-config
+# Tested on: Kali Linux Xfce 
+
+
+# Colors
+########
+
+# class                  border  backgr  text     indicator child_border 
+client.focused		 #8c8c8c #8c8c8c #eaeaea  #eaeaea   #8c8c8c
+client.focused_inactive  #1d2121 #1d2121 #a1a1a1  #484e50   #1d2121
+client.unfocused         #272727 #272727 #fdfdfd  #bfbfbf   #272727	
+client.urgent            #4a4b4c #4a4b4c #fdfdfd  #fbfbfb   #4a4c4b
+client.placeholder       #000000 #0c0c0c #eaeaea  #000000   #0c0c0c
+
+
+
+# Windows style
+###############
+
+# font for window titles. ISO 10646 = Unicode
+font xft:Terminus 9
+
+new_window pixel 1
+
+# Back and forth workplace switching
+workspace_auto_back_and_forth yes
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym 113 resize shrink width 10 px or 10 ppt
+        bindsym 116 resize grow height 10 px or 10 ppt
+        bindsym 111 resize shrink height 10 px or 10 ppt
+        bindsym 114 resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+z mode "resize"
+
+
+# Keybindings
+#############
+
+# Mod4 = Super Key  
+set $mod Mod4
+
+# start a terminal (terminator o i3-sensible-terminal)
+#bindsym $mod+Return exec --no-startup-id terminato
+bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
+
+# kill focused window
+bindsym $mod+q kill
+
+# start dmenu (a program launcher)
+#obindsym $mod+d exec dmenu_run -fn 'Terminus-9' -nb '#191919' -nf '#eaeaea' -sb '#191919' -sf '#bf3f34' -p '>' 
+
+# start rofi (a program laucher)
+bindsym $mod+d exec rofi -show drun 
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+J move left
+bindsym $mod+Shift+K move down
+bindsym $mod+Shift+L move up
+bindsym $mod+Shift+colon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, default)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout default
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindcode $mod+d focus child
+
+# reload the configuration file
+bindsym $mod+Shift+C reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+R restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+
+# Workspaces
+############
+
+# customize workspace name
+set $ws1   1: terminals
+set $ws2   2: web
+set $ws3   3: programming
+set $ws4   4: note/working
+set $ws5   5: music
+set $ws6   6: virtualbox
+set $ws7   7:
+set $ws8   8:
+set $ws9   9:
+set $ws0   10:
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws0
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws0
+
+# workspaces assignment
+# force a window on a named workspace
+assign [class="xfce4-terminal"]	$ws1
+assign [class="Firefox"]	$ws2
+assign [class="Hexchat"]        $ws2
+assign [class="Cherrytree"]     $ws4
+assign [class="Thunar"]         $ws4
+assign [class="Vlc"]            $ws5
+assign [class="VirtualBox"]     $ws6
+
+# enable floating mode for all xfce4-terminal windows
+for_window [class="xfce4-terminal"] floating enable border pixel 1
+
+
+# My Keybindings
+################
+
+# --no-startup-id = i don't need startup notifications
+# https://faq.i3wm.org/question/561/what-is-that-thing-called-no-startup-id
+bindsym $mod+F1 exec --no-startup-id firefox
+bindsym $mod+F2 exec --no-startup-id termite -e vim
+bindsym $mod+F3 exec --no-startup-id vlc
+bindsym $mod+F4 exec --no-startup-id hexchat
+bindsym $mod+F5 exec --no-startup-id cherrytree
+bindsym $mod+F6 exec --no-startup-id virtualbox
+bindsym $mod+t exec --no-startup-id thunar $pwd
+# screenshots
+bindsym Print exec xfce4-screenshooter 
+# screenlock
+bindsym $mod+Ctrl+l exec ~/.config/i3/lock.sh
+
+
+# i3bar
+#######
+
+# --> see i3status.conf for output configurations
+    bar {
+        status_command i3status -c ~/.config/i3/i3status.conf
+        position top
+       tray_output primary
+        font pango: Terminus 9
+        workspace_buttons yes
+        separator_symbol "::"
+        tray_padding 0
+    
+		colors {
+			background #33393B
+			statusline #eaeaea
+			separator  #081419
+			#	           border  backgr  text
+			focused_workspace  #336699 #336699 #eaeaea
+			inactive_workspace #1a344c #1a344c #bfbfbf
+			urgent_workspace   #1b1d1f #669999 #000000
+		}
+}
+
+ 
+# Start Up Configuration
+########################
+
+# wallpaper
+exec --no-startup-id feh --bg-fill ~/Immagini/mur_enduit.png
+
+# network-manager applet
+exec --no-startup-id nm-applet
